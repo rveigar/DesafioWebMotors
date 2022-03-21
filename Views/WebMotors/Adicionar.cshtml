@@ -1,0 +1,67 @@
+﻿@model Anuncio
+<div class="row">
+    <div class="col-5">
+        <form method="post" asp-action="Adicionar">
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Marca:
+                        <input asp-for="Marca" class="form-control" type="text" placeholder="Honda" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Modelo:
+                        <input asp-for="Modelo" class="form-control" type="text" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Versao:
+                        <input asp-for="Versao" class="form-control" type="text" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Ano:
+                        <input asp-for="Ano" class="form-control" type="number" />
+                    </label>
+                </div>
+            </div>
+
+             <div class="row">
+                <div class="col">
+                    <label>
+                        Quilometragem:
+                        <input asp-for="Quilometragem" class="form-control" type="number" />
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>
+                        Observacao:
+                        <input asp-for="Observacao" class="form-control" type="text" />
+                    </label>
+                </div>
+            </div>
+
+        <div class="row">
+                <div class="col">
+                    <a class="btn btn-outline-primary" href="/">Voltar</a>
+                    <input class="btn btn-primary" type="submit" value="Adicionar" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

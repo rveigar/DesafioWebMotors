@@ -1,0 +1,22 @@
+﻿@model List<Modelo>
+
+
+@{
+
+    foreach (var item in Model )   
+    {
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="modelID id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                ModeloId: @item.Id Modelo: @item.Name            
+                <br />
+            </label>
+       </div>
+      
+
+    }
+
+
+}
+

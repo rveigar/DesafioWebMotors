@@ -1,0 +1,50 @@
+﻿@model List<Marca>
+<h3> Escolha a sua Marca</h3>
+
+<select onchange="escolheuMarca(this.options[this.selectedIndex].value)" class="form-select">
+      <option label="-- Selecionar --" value="0"></option> 
+    @{     
+       foreach ( var item in Model )
+            {
+                <option label="@item.Name" value="@item.Id"></option>
+               <br/>
+            }
+        <br />
+    }
+</select>
+
+
+<div class="row">
+	<div class="col">
+		<br />
+		<label>
+			Modelos de carros:
+			<select id="modelosDeCarrosporMarca" >			
+			</select>
+		</label>
+	</div>
+</div>
+
+
+
+<script>
+    function escolheuMarca(MakeIdRecebido)
+    {
+        var url="https://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID=";
+	    $.get ( url + MakeIdRecebido, function(dados)
+	              {
+                    $("#modelosDeCarrosporMarca").html('');
+	                dados.forEach(item =>  
+                        {
+                            console.log(item.Name);
+                            var opcao = `<option value='${item.id}' label='Carro: ${item.Name}'> </option>`;
+                            $("#modelosDeCarrosporMarca").append(opcao);
+                        }
+                    )   
+ 	              }
+	            )
+     }  
+</script>     
+
+	
+
