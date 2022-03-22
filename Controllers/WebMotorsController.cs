@@ -48,7 +48,11 @@ namespace DesafioWebMotors.Controllers
             return View(modelos);
 
         }
-
+        public async Task<IActionResult> ListarVeiculos()
+        {
+            var veiculo = await _webapiservice.ListarVeiculos();
+            return View(veiculo);
+        }
 
     }
 }

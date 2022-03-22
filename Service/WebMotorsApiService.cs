@@ -32,7 +32,20 @@ namespace DesafioWebMotors.Service
 
             return new List<Marca>();
         }
+        // public async Task<List<Veiculo>> ListarVeiculos(int numPagina)
+        public async Task<List<Veiculo>> ListarVeiculos()
+        {
+            var resposta = await _httpClient.GetAsync(_urlDaAPI + "Vehicles?Page=1");
 
+            if (resposta.IsSuccessStatusCode)
+            {
+                var conteudoDaResposta = await resposta.Content.ReadAsStringAsync();
+                var conversaoDoJson = JsonConvert.DeserializeObject<List<Veiculo>>(conteudoDaResposta);
+                return conversaoDoJson;
+            }
+
+            return new List<Veiculo>();
+        }
         public async Task<List<Modelo>> ListarModelos(int id)
         {
             var resposta = await _httpClient.GetAsync(_urlDaAPI+"Model?MakeID="+id);

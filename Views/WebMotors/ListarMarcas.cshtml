@@ -1,7 +1,7 @@
 ﻿@model List<Marca>
 <h3> Escolha a sua Marca</h3>
 
-<select onchange="escolheuMarca(this.options[this.selectedIndex].value)" class="form-select">
+<select onchange="buscarModelo(this.options[this.selectedIndex].value)" >
       <option label="-- Selecionar --" value="0"></option> 
     @{     
        foreach ( var item in Model )
@@ -19,31 +19,63 @@
 		<br />
 		<label>
 			Modelos de carros:
-			<select id="modelosDeCarrosporMarca" >			
+			<select  onchange="buscarVersao(this.options[this.selectedIndex].value)" id="modelosDeCarrosporMarca" >			
 			</select>
 		</label>
 	</div>
 </div>
 
-
+<div class="row">
+	<div class="col">
+		<br />
+		<label>
+			Versao de carros:
+			<select id="modelosDeCarrosporVersao" >			
+			</select>
+		</label>
+	</div>
+</div>
 
 <script>
-    function escolheuMarca(MakeIdRecebido)
+    function buscarModelo(MakeIdRecebido)
     {
         var url="https://desafioonline.webmotors.com.br/api/OnlineChallenge/Model?MakeID=";
 	    $.get ( url + MakeIdRecebido, function(dados)
 	              {
-                    $("#modelosDeCarrosporMarca").html('');
+                    $( "#modelosDeCarrosporMarca").html('');
 	                dados.forEach(item =>  
                         {
                             console.log(item.Name);
-                            var opcao = `<option value='${item.id}' label='Carro: ${item.Name}'> </option>`;
+                            var opcao = `<option value='${item.ID}' label='Carro: ${item.Name}'> </option>`;
                             $("#modelosDeCarrosporMarca").append(opcao);
                         }
                     )   
  	              }
-	            )
+	           )
      }  
+</script>
+
+<script>
+   function buscarVersao(ModelIdRecebido)
+     {  
+     	console.log("modelo recebido: " + ModelIdRecebido);
+     	var url="https://desafioonline.webmotors.com.br/api/OnlineChallenge/Version?ModelID=";
+     	$.get ( url+ModelIdRecebido, function(dados)
+     				    { 
+     				    
+					        $("#modelosDeCarrosporVersao").html('');
+					        dados.forEach(item =>
+					            {
+					    	        var opcao =` <option value='${item.ID}' label='Versao: ${item.Name}'> </option>`;
+                                    console.log("opcao da versao: " + opcao);
+					    	        $("#modelosDeCarrosporVersao").append(opcao);
+					            }
+     				      )
+     				    }
+                )
+
+     }
+
 </script>     
 
 	
