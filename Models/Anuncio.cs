@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
+
 namespace DesafioWebMotors.Models
 {
     [Table("tb_AnuncioWebmotors")]
@@ -36,5 +39,6 @@ namespace DesafioWebMotors.Models
         [Column("observacao")]
         public string Observacao { get; set; }
 
+       
     }
 }

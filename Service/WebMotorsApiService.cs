@@ -1,21 +1,21 @@
 ﻿using DesafioWebMotors.Models;
-using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Mvc;
-using Microsoft.Extensions.Configuration;
-
+using DesafioWebMotors.Repository;
 
 namespace DesafioWebMotors.Service
 {
     public class WebMotorsApiService
     {
         private HttpClient _httpClient;
+        private MainRepository _mainRepository;
         public WebMotorsApiService()
         {
             _httpClient = new HttpClient();
+            _mainRepository = new MainRepository();
+
         }
 
         public string _urlDaAPI = "https://desafioonline.webmotors.com.br/api/OnlineChallenge/";
@@ -59,5 +59,6 @@ namespace DesafioWebMotors.Service
 
             return new List<Modelo>();
         }
+       
     }
 }

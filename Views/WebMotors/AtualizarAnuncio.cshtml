@@ -1,0 +1,25 @@
+﻿@model Anuncio
+
+
+<h2>Editar a categoria @Model.Marca</h2>
+<form method="post" asp-action="AtualizarAnuncio" asp-route-id="@Model.Id">
+    <div class="row">
+        <div class="col">
+            <label>
+                Marca:
+                <input asp-for="Marca" class="form-control" type="text" placeholder="Honda" />
+            </label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label>
+                Modelo:
+                <input asp-for="Modelo" class="form-control" type="text" />
+            </label>
+        </div>
+    </div>
+     <input type="submit" class="btn btn-primary" value="Salvar alterações" />
+</form>
+

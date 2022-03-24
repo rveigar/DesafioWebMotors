@@ -1,0 +1,36 @@
+﻿@model List<Anuncio>
+
+<div class="row">
+
+    @{
+        foreach (var item in Model)
+        {
+
+            <div class="col-4">
+            
+                <div class="card" style="width: 18rem;">
+                       <div class="card-body">
+                            <h5 class="card-title">@item.Marca</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@item.Modelo</h6>
+                            <p class="card-text">@item.Versao</p>
+                           
+                            <a href="/Home/Index" class="card-link">Voltar</a>
+                       </div>
+
+
+
+              </div>
+                <form method="post" asp-action="ExcluirAnuncio" asp-route-id="@item.Id">
+                    <input type="submit" class="btn btn-danger" value="Excluir esse Anuncio" /> 
+                </form>
+                <form method="post" asp-action="EditarAnuncio" asp-route-id="@item.Id">
+                    <input type="submit" class="btn btn-primary" value="Atualizar esse Anuncio"> 
+                </form>
+
+        </div>
+
+      }
+
+   }
+
+</div>

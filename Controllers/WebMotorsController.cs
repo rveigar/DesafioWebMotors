@@ -1,6 +1,7 @@
 ﻿using DesafioWebMotors.Models;
 using DesafioWebMotors.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DesafioWebMotors.Controllers
@@ -53,6 +54,32 @@ namespace DesafioWebMotors.Controllers
             var veiculo = await _webapiservice.ListarVeiculos();
             return View(veiculo);
         }
+        public IActionResult ListarAnuncios()
+        {
+            var listaAnuncios = _mainservice.ListarAnuncios();
+
+            return View(listaAnuncios);
+        }
+        [Route("WebMotors/ExcluirAnuncio/{id}")]
+        public IActionResult ExcluirAnuncio([FromRoute] int id)
+        {
+            _mainservice.ExcluirAnuncio(id);
+            return Redirect("/");
+        }
+        [HttpPost]
+        [Route("WebMotors/AtualizarAnuncio/{id}")]
+        public IActionResult AtualizarAnuncio([FromRoute] int id, Anuncio anuncio)
+        {
+              _mainservice.AtualizarAnuncio(anuncio  ,id);
+              return Redirect("/");
+        }
+        public IActionResult EditarAnuncio([FromRoute] int id)
+        {
+            var resultado = _mainservice.SelecionarAnuncio(id);
+            return View(resultado);
+        }
+        
+        
 
     }
 }
